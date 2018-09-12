@@ -2,9 +2,9 @@
 
 class Globals {
 
-   static String GitRepo = 'https://github.com/psymonn/PSHitchhiker.git'
+   static String GitRepo = 'https://github.com/psymonn/PublishInternalModule.git'
 
-   static String ModuleName = 'PSHitchhiker'
+   static String ModuleName = 'PublishInternalModule'
 
    static String JenkinsChannel = '#jenkins-channel'
 
@@ -32,72 +32,32 @@ node('master') {
 
     }
 
-    stage('Stage: InstallDependencies') {
-
-      posh 'Invoke-Build InstallDependencies'
-
-    }
-
     stage('Stage 1: Clean') {
 
       posh 'Invoke-Build Clean'
 
     }
 
-    stage('Stage 2: Analyze') {
 
-      posh 'Invoke-Build Analyze'
+    stage('Stage: Save dependencies') {
+
+      posh 'Invoke-Build SaveDependency'
 
     }
 
+    stage('Stage: Import dependencies') {
+
+      posh 'Invoke-Build ImportDependency'
+
+    }
+        
     stage('Stage 3: Test') {
 
       posh 'Invoke-Build RunTests'
 
-      step([$class: 'NUnitPublisher',
-
-        testResultsPattern: '**\\TestResults.xml',
-
-        debug: false,
-
-        keepJUnitReports: true,
-
-        skipJUnitArchiver:false,
-
-        failIfNoResults: true
-
-      ])
-
-      publishHTML (target: [
-
-        allowMissing: false,
-
-        alwaysLinkToLastBuild: true,
-
-        keepAll: true,
-
-        reportDir: 'artifacts',
-
-        reportFiles: 'TestReport.htm',
-
-        reportName: "PowerShell Test Report"
-
-      ])
-
-      posh 'Invoke-Build ConfirmTestsPassed'
-
     }
 
-    stage('Stage 4: Archive') {
-
-      posh 'Invoke-Build Archive'
-
-      archiveArtifacts artifacts: "artifacts/${Globals.ModuleName}.zip", onlyIfSuccessful: true
-
-      archiveArtifacts artifacts: "artifacts/${Globals.ModuleName}.*.nupkg", onlyIfSuccessful: true
-
-    }
-
+    
     stage('Stage 5: Publish') {
 
       timeout(20) {
@@ -107,8 +67,6 @@ node('master') {
       }
 
     }
-
-
 
   } catch (e) {
 
