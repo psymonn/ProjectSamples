@@ -13,9 +13,7 @@ param(
     $ModulePath = './PublishInternalModule',
 
     #$BuildNumber = $env:BUILD_NUMBER,
-    $BuildNumber = '3',
-
-    $PercentCompliance  = '60'
+    $BuildNumber = '3'
 
 )
 
@@ -32,30 +30,12 @@ $Settings = @{
     #SMBRepoName = 'LocalFileBase'
     #SMBRepoPath = 'C:\Data\App\LocalFileSharing'
 
-    SMBRepoName = 'LocalNuGetFeed'
-    SMBRepoPath = 'http://localhost:8082/nuget'
-    SMBApiKey   = 'SECRETKEY'
+    PublishRepoName = 'LocalNuGetFeed'
+    SaveRepoName = 'LocalNuGetFeed'
+    ApiKey   = 'SECRETKEY'
 
-    Author = "Author's Name"
-    Owners = "Owner's Name"
-
-    LicenseUrl = 'https://github.com/psymonn/PSHitchhiker/LICENSE'
-
-    ProjectUrl = "https://github.com/psymonn/PSHitchhiker"
-
-    PackageDescription = "PSHitchhiker module pipeline demonstration"
-
-    Repository = 'https://github.com/psymonn/PSHitchhiker.git'
-
-    Tags = ""
-
-
-
-    # TODO: fix any redudant naming
-
-    GitRepo = "Psymonn/PSHitchhiker"
-
-    CIUrl = "http://localhost:8080/job/New%20Project%20pipeline/"
+    PackageDescription = "PublishInternalModule module pipeline demonstration"
+    Repository = 'https://github.com/psymonn/PublishInternalModule.git'
 
 }
 
