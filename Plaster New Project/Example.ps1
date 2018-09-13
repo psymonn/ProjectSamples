@@ -1,4 +1,6 @@
-﻿#one off template creation
+﻿#https://kevinmarquette.github.io/2017-05-14-Powershell-Plaster-GetPlastered-template/?utm_source=blog&utm_medium=blog&utm_content=recent
+
+#one off template creation
 Install-Module Plaster
 
 $manifestProperties = @{
