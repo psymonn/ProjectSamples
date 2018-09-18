@@ -92,3 +92,5 @@ or
 
 .\Build.ps1 -InsertCBH
 
+https://modulebuild-psy.readthedocs.io/en/latest/Usage/7%20-%20Project%20Documentation/index.html
+
