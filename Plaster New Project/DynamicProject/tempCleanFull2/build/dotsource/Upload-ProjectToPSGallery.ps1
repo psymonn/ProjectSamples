@@ -22,7 +22,7 @@ function Script:Upload-ProjectToPSGallery {
         [parameter(Mandatory=$true, HelpMessage='Name of the module to upload.')]
         [string]$Name,
         [parameter(HelpMessage='Destination gallery (default is PSGallery)')]
-        [string]$Repository = 'PSGallery',
+        [string]$Repository = 'LocalNuGetFeed',
         [parameter(HelpMessage='API key for the powershellgallery.com site.')]
         [string]$NuGetApiKey
     )

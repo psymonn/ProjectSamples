@@ -64,7 +64,31 @@ or
 
 .\Build.ps1 -BuildModule -InstallAndTestModule -UploadPSGallery -ReleaseNotes 'First Upload'
 
+#---------------------------------
+Release to Gallery:
+#---------------------------------
 
-task Configure ValidateRequirements, PreBuildTasks, LoadRequiredModules, LoadModuleManifest, LoadModule, VersionCheck, LoadBuildTools
-task . Configure, CodeHealthReport, Clean, PrepareStage, GetPublicFunctions, SanitizeCode, CreateHelp, CreateModulePSM1, CreateModuleManifest, AnalyzeModuleRelease, PushVersionRelease, PushCurrentRelease, CreateProjectHelp, PostBuildTasks, BuildSessionCleanup
+release to PSGallery (changed to LocalNuGetFeed):
+.\Build.ps1 -BuildModule -InstallAndTestModule -UploadPSGallery -ReleaseNotes 'First Upload'
+
+or 
+
+Invoke-Build -Task BuildInstallTestAndPublishModule
+
+Set-BuildEnvironment -NugetAPIKey 'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
+.\Build.ps1 -UploadPSGallery
+
+#---------------------------------
+Start Your Next Release:
+#---------------------------------
+
+.\Build.ps1 -NewVersion '0.0.5'
+.\Build.ps1
+
+or 
+
+.\Build.ps1 -NewVersion '0.0.5' -BuildModule -InstallAndTestModule -UploadPSGallery -ReleaseNotes '0.0.5 release'
+
+
+.\Build.ps1 -InsertCBH
 

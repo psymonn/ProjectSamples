@@ -46,3 +46,6 @@ the latest meta test from the claudiospizzi/PowerShellModuleBase repository.
 **Author:** Psymon
 
 **Website:** https://www.github.com/psymon/tempCleanFull2
+
+**Doc**
+https://modulebuild-psy.readthedocs.io/en/latest/Usage/7%20-%20Project%20Documentation/index.html
