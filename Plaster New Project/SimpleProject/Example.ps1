@@ -4,20 +4,20 @@
 Install-Module Plaster
 
 $manifestProperties = @{
-    Path = ".\FullModuleTemplate\PlasterManifest.xml"
-    Title = "Full Module Template"
-    TemplateName = 'FullModuleTemplate'
-    TemplateVersion = '0.0.1'
-    Author = 'Psymon'
-    Description = "Some description"
-    TemplateType = "Item"
+    Path = ".\FullModuleTemplate2\PlasterManifest.xml"
+    Title = "Full Module Template2"
+    TemplateName = 'FullModuleTemplate2'
+    TemplateVersion = '0.0.2'
+    Author = 'Psymon2'
+    Description = "Some description 2"
+    #TemplateType = "Item"
 }
 
-New-Item -Path FullModuleTemplate -ItemType Directory
-New-PlasterManifest @manifestProperties
-#New-PlasterManifest -TemplateName NewPowerShellItem -TemplateType Item 
+#New-Item -Path FullModuleTemplate2 -ItemType Directory (not required)
+#New-PlasterManifest @manifestProperties (only use this to create a new manifest, otherwise you'll overwrite the existing one)
+#New-PlasterManifest -TemplateName NewPowerShellItem -TemplateType Item
 #New-PlasterManifest -TemplateName NewPowerShellItem -TemplateType Item -AddContent
-#New-PlasterManifest -TemplateName NewPowerShellItem -TemplateType Item -TemplateVersion 0.1.0 -Description "Some 
+#New-PlasterManifest -TemplateName NewPowerShellItem -TemplateType Item -TemplateVersion 0.1.0 -Description "Some
 #    description." -Tags Module, Publish,Build
 
 ######################
@@ -25,7 +25,7 @@ New-PlasterManifest @manifestProperties
 
 $plaster = @{
     TemplatePath = (Split-Path $manifestProperties.Path)
-    DestinationPath = "F:\scripts\Plaster\Temp\Module"
+    DestinationPath = ".\Temp2\Module"
 }
 
 New-Item -ItemType Directory -Path $plaster.DestinationPath

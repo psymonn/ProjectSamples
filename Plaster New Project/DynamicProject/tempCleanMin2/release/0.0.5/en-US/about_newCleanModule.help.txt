@@ -1,0 +1,17 @@
+TOPIC
+    about_newCleanModule
+
+SHORT DESCRIPTION
+    new clean module description
+
+LONG DESCRIPTION
+    new clean module description
+
+EXAMPLES
+    TBD
+
+KEYWORDS
+    tagClean
+
+SEE ALSO
+    https://www.github/Psymon/newCleanModule

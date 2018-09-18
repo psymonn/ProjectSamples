@@ -1,0 +1,13 @@
+﻿use_directory_urls: false
+site_author: Psymon
+copyright: tempCleanFull2 is licensed under <a href='https://www.github.com/psymon/tempCleanFull2/blob/master/License.md'>this</a> license
+theme: readthedocs
+site_name: tempCleanFull2 Docs
+pages:
+- Acknowledgements: Acknowledgements.md
+- ChangeLog: ChangeLog.md
+- Contributing: Contributing.md
+- index: index.md
+- Functions: Functions/New-AwesomeFunction.md
+repo_url: https://www.github.com/psymon/tempCleanFull2
+

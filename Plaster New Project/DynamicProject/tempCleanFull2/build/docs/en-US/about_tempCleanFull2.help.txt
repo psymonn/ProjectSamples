@@ -1,0 +1,17 @@
+TOPIC
+    about_tempCleanFull2
+
+SHORT DESCRIPTION
+    Temp Clean Full 2 Module
+
+LONG DESCRIPTION
+    Temp Clean Full 2 Module
+
+EXAMPLES
+    TBD
+
+KEYWORDS
+    tmepCleanFull2Tag
+
+SEE ALSO
+    https://www.github.com/psymon/tempCleanFull2
