@@ -24,6 +24,10 @@ New-MarkdownHelp -Module platyPS -OutputFolder .\docs
 New-MarkdownHelp -Module PSGraph -OutputFolder .\docs
 New-MarkdownHelp -Module Mytools -OutputFolder .\docs
 New-MarkdownHelp -Module DiskSpaceInfo -OutputFolder .\docs
+New-MarkdownHelp -Module tempCleanFull -OutputFolder .\docs
+
+Import-Module .\tempCleanFull.psd1
+New-MarkdownHelp -Module tempCleanFull -OutputFolder .\docs
 
 New-ExternalHelp .\docs -OutputPath en-US\
 
@@ -94,3 +98,5 @@ or
 
 https://modulebuild-psy.readthedocs.io/en/latest/Usage/7%20-%20Project%20Documentation/index.html
 
+Pester:
+.\Build.ps1 -test

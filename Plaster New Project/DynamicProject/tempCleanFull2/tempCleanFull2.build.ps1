@@ -866,6 +866,7 @@ task GitPushRelease VersionCheck, {
     exec { git push origin "v$($Script:BuildEnv.ModuleVersion)" }
 }
 
+
 # Synopsis: Push to github
 task GithubPush VersionCheck, {
     exec { git add . }

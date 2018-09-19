@@ -1,3 +1,5 @@
+$ModuleBuildLoggingEnabled = $true
+
 # Current script path
 [string]$ModulePath = Split-Path (get-variable myinvocation -scope script).value.Mycommand.Definition -Parent
 
