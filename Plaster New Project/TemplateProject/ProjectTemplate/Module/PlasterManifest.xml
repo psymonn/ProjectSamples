@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plasterManifest 
+        xmlns="http://www.microsoft.com/schemas/PowerShell/Plaster/v1" schemaVersion="1.0">
+        <metadata>
+                <name>ProjectModuleTemplate</name>
+                <id>4216d992-c3f8-4f44-aa7d-00dfdb776434</id>
+                <version>0.0.1</version>
+                <title>Project Custom Module Template</title>
+                <description>Plaster template to create a module</description>
+                <author>Simon Nguyen</author>
+                <tags></tags>
+        </metadata>
+        <parameters>
+                <parameter name='ModuleAuthor' type = 'user-fullname' prompt='Author' />
+                <parameter name='ModuleName' type = 'text' prompt='Name of your module' />
+                <parameter name='ModuleVersion' type = 'text' prompt='Version Number' default='0.0.1' />
+                <parameter name='ModuleDesc' type = 'text' prompt='Brief Description of your module' />
+                <parameter name='FunctionFolders' type = 'multichoice' prompt='Please select folders to include' default='0,1,2'>
+                        <choice label='&amp;Public' value='Public' help='Adds a public folder to module root'/>
+                        <choice label='&amp;Private' value='Private' help='Adds a Private folder to module root'/>
+                        <choice label='&amp;Plugins' value='Plugins' help='Adds a Plugins folder to module root'/>
+                </parameter>
+                <parameter name='Pester' type = 'choice' prompt='Include Pester Tests?' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a tests folder'/>
+                        <choice label='&amp;No' value='No' help='Does not add a tests folder'/>
+                </parameter>
+                <parameter name='Git' type = 'choice' prompt='Include GIt Support?' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Includes Git files'/>
+                        <choice label='&amp;No' value='No' help='Does not include git files'/>
+                </parameter>
+                <parameter name='InvokeBuild' type = 'choice' prompt='Include InvokeBuild Script' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds an invoke build script at the root of module'/>
+                        <choice label='&amp;No' value='No' help='Does not include any invoke build scripts'/>
+                </parameter>
+                <parameter name='PSGraph' type = 'choice' prompt='Include PSGraph' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a PSGraph diagram'/>
+                        <choice label='&amp;No' value='No' help='Does not add PSGraph support'/>
+                </parameter>
+                <parameter name='PlatyPS' type = 'choice' prompt='Include PlatyPS' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a PlatyPS for help'/>
+                        <choice label='&amp;No' value='No' help='Does not add PlatyPS support'/>
+                </parameter>
+				<parameter name='VScode' type = 'choice' prompt='Include VScode' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a VScode support'/>
+                        <choice label='&amp;No' value='No' help='Does not add VScode support'/>
+                </parameter>
+        </parameters>
+        <content>
+                <message>Setting up your project</message>
+                <newModuleManifest destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psd1' moduleVersion='$PLASTER_PARAM_ModuleVersion' rootModule='${PLASTER_PARAM_ModuleName}.psm1' author='$PLASTER_PARAM_ModuleAuthor' description='$PLASTER_PARAM_ModuleDesc'/>
+                <templateFile source='template.psm1' destination='${PLASTER_PARAM_ModuleName}\${PLASTER_PARAM_ModuleName}.psm1'/>
+				
+                <message>Creating you folders for module: </message>
+                <file source='' destination='${PLASTER_PARAM_ModuleName}\Public\' condition='$PLASTER_PARAM_FunctionFolders -contains "Public"'/>
+                <file source='' destination='${PLASTER_PARAM_ModuleName}\Private\' condition='$PLASTER_PARAM_FunctionFolders -contains "Private"'/>
+                <file source='' destination='.\Plugins\' condition='$PLASTER_PARAM_FunctionFolders -contains "Plugins"'/>
+				
+                <message condition='$PLASTER_PARAM_Pester -eq "Yes"'>Setting up support for Pester</message>
+                <requireModule name="Pester" minimumVersion="3.4.0" condition='$PLASTER_PARAM_Pester -eq "Yes"'/>
+                <file source='basicTest.ps1' destination='.\Tests\${PLASTER_PARAM_ModuleName}.tests.ps1' condition='$PLASTER_PARAM_Pester -eq "Yes"'/>
+				
+                <message condition='$PlASTER_PARAM_Git -eq "Yes"'>Setting up support for Git</message>
+                <templateFile source='README.md' destination='.\README.md' condition='$PLASTER_PARAM_Git -eq "Yes"'/>
+                <file source='.gitignore' destination='.gitignore' condition='$PlASTER_PARAM_Git -eq "Yes"'/>
+				<file source='LICENSE' destination='LICENSE' condition='$PlASTER_PARAM_Git -eq "Yes"'/>
+				
+                <message condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'>Setting up support for Invoke-Build</message>
+                <requireModule name="InvokeBuild" condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+                <templateFile source='default.build.ps1' destination='${PLASTER_PARAM_ModuleName}.build.ps1' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='default.settings.ps1' destination='${PLASTER_PARAM_ModuleName}.settings.ps1' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='build_utils.ps1' destination='.\build_utils.ps1' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='Jenkinsfile' destination='.\Jenkinsfile' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<file source='PSTestReport\**' destination='.\PSTestReport' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				
+                <message condition='$PLASTER_PARAM_PSGraph -eq "Yes"'>Setting up support for PSGraph</message>
+                <requireModule name="PSGraph" condition='$PLASTER_PARAM_PSGraph -eq "Yes"'/>
+                <file source='CommandFlow.ps1' destination='${PLASTER_PARAM_ModuleName}\Graphs\CommandFlow.ps1' condition='$PLASTER_PARAM_PSGraph -eq "Yes"'/>
+				
+                <message condition='$PLASTER_PARAM_PlatyPS -eq "Yes"'>Setting up support for PlatyPS</message>
+                <requireModule name="PlatyPS" condition='$PLASTER_PARAM_PlatyPS -eq "Yes"'/>
+                <file source='' destination='${PLASTER_PARAM_ModuleName}\en-US' condition='$PLASTER_PARAM_PlatyPS -eq "Yes"'/>
+				
+				<message condition='$PLASTER_PARAM_VScode -eq "Yes"'>Setting up support for VScode</message>
+                <file source='.vscode\**' destination='${PLASTER_PARAM_ModuleName}\.vscode' condition='$PLASTER_PARAM_VScode -eq "Yes"'/>
+        </content>
+</plasterManifest>

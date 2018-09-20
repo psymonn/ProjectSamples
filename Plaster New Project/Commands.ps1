@@ -16,6 +16,8 @@ Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Projec
 Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\NormalProject\PlasterTemplates\Function' -DestinationPath .\tempClean
 Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\NormalProject\PlasterTemplates\BlogPost' -DestinationPath .\tempClean
 
+cd F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplat
+Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplate\Module' -DestinationPath .\tempClean
 #---------------------------------
 Genearate MD and Help files:
 #---------------------------------
