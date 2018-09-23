@@ -1,13 +1,9 @@
 # Include: Settings
-<%
-". `'./$PLASTER_PARAM_ModuleName.settings.ps1`'"
-%>
+. './GoodSample2.settings.ps1'
 # Include: build_utils
 . './build_utils.ps1'
 
-<%
-"Update-ModuleManifest -Path .\$PLASTER_PARAM_ModuleName\$PLASTER_PARAM_ModuleName.psd1 -ModuleVersion `"1.1.1.0`""
-%>
+Update-ModuleManifest -Path .\GoodSample2\GoodSample2.psd1 -ModuleVersion "1.1.1.0"
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -163,3 +159,4 @@ task Publish BeforePublish, {
 
     Publish-SMBModule @moduleInfo -Verbose
 }, AfterPublish
+

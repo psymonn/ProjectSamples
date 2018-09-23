@@ -3,8 +3,8 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-	$ModuleName = "PSHitchhiker12",
-	$ModulePath = './PSHitchhiker12',
+	$ModuleName = "GoodSample2",
+	$ModulePath = './GoodSample2',
     $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
 	$BuildNumber = '1'	
@@ -20,13 +20,13 @@ $Settings = @{
     SMBRepoPath = 'http://localhost:8087/nuget'
 	Tags = ""
     Author = 'psymonn'
-    LicenseUrl = 'https://github.com/psymonn/PSHitchhiker12/LICENSE'
-    ProjectUrl = "https://github.com/psymonn/PSHitchhiker12"
-    PackageDescription = 'adsf'
-    Repository = 'https://github.com/psymonn/PSHitchhiker12.git'
+    LicenseUrl = 'https://github.com/psymonn/GoodSample2/LICENSE'
+    ProjectUrl = "https://github.com/psymonn/GoodSample2"
+    PackageDescription = 'asdf'
+    Repository = 'https://github.com/psymonn/GoodSample2.git'
     # TODO: fix any redudant naming
-    GitRepo = "psymonn/PSHitchhiker12"
-    CIUrl = "http://localhost:8080/job/PSHitchhiker12 Pineline/"
+    GitRepo = "psymonn/GoodSample2"
+    CIUrl = "http://localhost:8080/job/GoodSample2 Pineline/"
 }
 
 ###############################################################################

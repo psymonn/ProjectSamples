@@ -17,7 +17,14 @@ Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Projec
 Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\NormalProject\PlasterTemplates\BlogPost' -DestinationPath .\tempClean
 
 cd F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplat
-Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplate\Module' -DestinationPath .\tempClean
+Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplate\Module' -DestinationPath .\GoodSample
+Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplate\Module' -DestinationPath .\GoodSample2
+
+
+#generate new public function
+cd F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\PSHitchhiker14\PSHitchhiker14
+Invoke-Plaster -TemplatePath 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\ProjectTemplate\Function' -DestinationPath .\GoodSample\GoodSample\Public
+
 #---------------------------------
 Genearate MD and Help files:
 #---------------------------------

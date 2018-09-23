@@ -3,7 +3,7 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 
 #since we match the srs/tests organization this works
 #$here = $here -replace 'tests', 'PSHitchhiker'
-$here = $here -replace 'tests', 'PSHitchhiker12'	
+$here = $here -replace 'tests', 'GoodSample2'	
 write-host "Invoke-PSHitchhiker.tests here: " $here
 write-host "Invoke-PSHitchhiker.tests here\sut:"  "$here\Public\$sut"
 
@@ -11,10 +11,10 @@ write-host "Invoke-PSHitchhiker.tests here\sut:"  "$here\Public\$sut"
 
 # Import our module to use InModuleScope
 #Import-Module (Resolve-Path ".\PSHitchhiker\PSHitchhiker.psm1") -Force
-Import-Module (Resolve-Path ".\PSHitchhiker12\PSHitchhiker12.psm1") -Force	
+Import-Module (Resolve-Path ".\GoodSample2\GoodSample2.psm1") -Force	
 
 #InModuleScope "PSHitchhiker" {
-InModuleScope "PSHitchhiker12" {
+InModuleScope "GoodSample2" {
     Describe "Public/Invoke-ModuleName" {
         Context "Ask" {
             It "Asks a question" {
