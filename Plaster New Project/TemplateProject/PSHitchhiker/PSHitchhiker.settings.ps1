@@ -5,7 +5,7 @@ param(
     $Artifacts = './artifacts',
 	$ModuleName = "PSHitchhiker",
 	$ModulePath = './PSHitchhiker',
-    $PercentCompliance  = '0',
+    $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
 	$BuildNumber = '10'	
 )

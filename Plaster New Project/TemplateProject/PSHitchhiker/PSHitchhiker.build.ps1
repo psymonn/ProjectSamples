@@ -3,7 +3,7 @@
 # Include: build_utils
 . './build_utils.ps1'
 
-Update-ModuleManifest -Path .\PSHitchhiker\PSHitchhiker.psd1 -ModuleVersion "1.1.1.0"
+#Update-ModuleManifest -Path .\PSHitchhiker\PSHitchhiker.psd1 -ModuleVersion "1.1.1.0"
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -55,6 +55,8 @@ task Analyze BeforeAnalyze, {
     # Save Analyze Results as JSON
     $saResults | ConvertTo-Json | Set-Content (Join-Path $Artifacts "ScriptAnalysisResults.json")
 
+    write-host "code analysis $saResults"
+
     if ($saResults) {
         $saResults | Format-Table
         throw "One or more PSScriptAnalyzer errors/warnings where found."
@@ -77,6 +79,7 @@ task RunTests {
     $testResults = Invoke-Pester @invokePesterParams;
 
     # Save Test Results as JSON
+    #$testresults | ConvertTo-Json -Depth 5 | Set-Content  (Join-Path $Artifacts "PesterResults.json")
     $testresults | ConvertTo-Json -Depth 5 | Set-Content  (Join-Path $Artifacts "PesterResults.json")
 
     # Old: Publish Code Coverage as HTML
@@ -98,12 +101,16 @@ task RunTests {
         CiURL = $Settings.CiURL
         ShowHitCommands = $true
         Compliance = ($PercentCompliance / 100)
-        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalyzerResults.json")
+        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalysisResults.json")
         PesterFile =  (Join-Path $Artifacts "PesterResults.json")
         OutputDir = "$Artifacts"
     }
 
     . ".\PSTestReport\Invoke-PSTestReport.ps1" @options
+    #$Artifacts = 'F:\GitHub\Source\ProjectSamples\Plaster New Project\TemplateProject\PSHitchhiker\artifacts'
+    $CodeHealthReport = (Join-Path $Artifacts "CodeHealthReport-Public.html")
+    $testing = (Join-Path $Artifacts "testing.json")
+    #Invoke-PSCodeHealth -Path ../$ModulePath -Recurse -HtmlReportPath $CodeHealthReport -PassThru
 }
 
 # Synopsis: Throws and error if any tests do not pass for CI usage
@@ -116,6 +123,7 @@ task ConfirmTestsPassed {
     # Fail Build if Coverage is under requirement
     $json = Get-Content (Join-Path $Artifacts "PesterResults.json") | ConvertFrom-Json
     $overallCoverage = [Math]::Floor(($json.CodeCoverage.NumberOfCommandsExecuted / $json.CodeCoverage.NumberOfCommandsAnalyzed) * 100)
+    #$overallCoverage = 61
     assert($OverallCoverage -gt $PercentCompliance) ('A Code Coverage of "{0}" does not meet the build requirement of "{1}"' -f $overallCoverage, $PercentCompliance)
 }
 

@@ -1,9 +1,9 @@
 # Include: Settings
-. './PSHitchhiker13.settings.ps1'
+. './PSHitchhiker12.settings.ps1'
 # Include: build_utils
 . './build_utils.ps1'
 
-Update-ModuleManifest -Path .\PSHitchhiker13\PSHitchhiker13.psd1 -ModuleVersion "1.1.1.0"
+Update-ModuleManifest -Path .\PSHitchhiker12\PSHitchhiker12.psd1 -ModuleVersion "1.1.1.0"
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -98,7 +98,7 @@ task RunTests {
         CiURL = $Settings.CiURL
         ShowHitCommands = $true
         Compliance = ($PercentCompliance / 100)
-        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalyzerResults.json")
+        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalysisResults.json")
         PesterFile =  (Join-Path $Artifacts "PesterResults.json")
         OutputDir = "$Artifacts"
     }

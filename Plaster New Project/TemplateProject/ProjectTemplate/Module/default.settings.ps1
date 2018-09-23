@@ -9,8 +9,8 @@ param(
 	 @'
     $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
+	$BuildNumber = '1'
 '@	
-"	`$BuildNumber = `'$PLASTER_PARAM_ModuleVersion`'"
 %>	
 )
 

@@ -8,8 +8,8 @@ Write-Host "file: $sut"
 $here = $here -replace 'tests', 'PSHitchhiker'
 Write-Host "replace: $here"
 
-. "$here\$sut"
-write-host "dot-source: $here\$sut"
+. "$here\Private\$sut"
+write-host "dot-source: $here\Private\$sut"
 
 # Import our module to use InModuleScope
 Import-Module (Resolve-Path ".\PSHitchhiker\PSHitchhiker.psm1") -Force

@@ -8,8 +8,8 @@ $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'
 Write-Host "file: $sut"
 
 #only using dot sourcing not auto import modules
-. "$here\$sut"
-write-host "dot-source: $here\$sut"
+. "$here\Private\$sut"
+write-host "dot-source: $here\Private\$sut"
 
 Describe "Get-RomanNumeral" {
   Context "Simple Calculations" {

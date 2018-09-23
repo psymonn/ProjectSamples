@@ -102,7 +102,7 @@ task RunTests {
         CiURL = $Settings.CiURL
         ShowHitCommands = $true
         Compliance = ($PercentCompliance / 100)
-        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalyzerResults.json")
+        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalysisResults.json")
         PesterFile =  (Join-Path $Artifacts "PesterResults.json")
         OutputDir = "$Artifacts"
     }

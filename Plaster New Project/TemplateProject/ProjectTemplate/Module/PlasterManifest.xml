@@ -70,11 +70,15 @@
 				<templateFile source='default.settings.ps1' destination='${PLASTER_PARAM_ModuleName}.settings.ps1' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
 				<templateFile source='build_utils.ps1' destination='.\build_utils.ps1' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
 				<templateFile source='Jenkinsfile' destination='.\Jenkinsfile' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='Tests\**' destination='.\Tests' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='Private\**' destination='${PLASTER_PARAM_ModuleName}\Private' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				<templateFile source='Public\**' destination='${PLASTER_PARAM_ModuleName}\Public' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
 				<file source='PSTestReport\**' destination='.\PSTestReport' condition='$PLASTER_PARAM_InvokeBuild -eq "Yes"'/>
+				
 				
                 <message condition='$PLASTER_PARAM_PSGraph -eq "Yes"'>Setting up support for PSGraph</message>
                 <requireModule name="PSGraph" condition='$PLASTER_PARAM_PSGraph -eq "Yes"'/>
-                <file source='CommandFlow.ps1' destination='${PLASTER_PARAM_ModuleName}\Graphs\CommandFlow.ps1' condition='$PLASTER_PARAM_PSGraph -eq "Yes"'/>
+                <file source='CommandFlow.ps1' destination='.\Graphs\CommandFlow.ps1' condition='$PLASTER_PARAM_PSGraph -eq "Yes"'/>
 				
                 <message condition='$PLASTER_PARAM_PlatyPS -eq "Yes"'>Setting up support for PlatyPS</message>
                 <requireModule name="PlatyPS" condition='$PLASTER_PARAM_PlatyPS -eq "Yes"'/>

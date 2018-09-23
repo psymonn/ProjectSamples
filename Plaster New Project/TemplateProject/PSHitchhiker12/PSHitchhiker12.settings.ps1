@@ -3,11 +3,11 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-	$ModuleName = "PSHitchhiker13",
-	$ModulePath = './PSHitchhiker13',
+	$ModuleName = "PSHitchhiker12",
+	$ModulePath = './PSHitchhiker12',
     $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
-	$BuildNumber = '62'	
+	$BuildNumber = '1'	
 )
 
 ###############################################################################
@@ -20,13 +20,13 @@ $Settings = @{
     SMBRepoPath = 'http://localhost:8087/nuget'
 	Tags = ""
     Author = 'psymonn'
-    LicenseUrl = 'https://github.com/psymonn/PSHitchhiker13/LICENSE'
-    ProjectUrl = "https://github.com/psymonn/PSHitchhiker13"
-    PackageDescription = 'dsgdf'
-    Repository = 'https://github.com/psymonn/PSHitchhiker13.git'
+    LicenseUrl = 'https://github.com/psymonn/PSHitchhiker12/LICENSE'
+    ProjectUrl = "https://github.com/psymonn/PSHitchhiker12"
+    PackageDescription = 'adsf'
+    Repository = 'https://github.com/psymonn/PSHitchhiker12.git'
     # TODO: fix any redudant naming
-    GitRepo = "psymonn/PSHitchhiker13"
-    CIUrl = "http://localhost:8080/job/PSHitchhiker13 Pineline/"
+    GitRepo = "psymonn/PSHitchhiker12"
+    CIUrl = "http://localhost:8080/job/PSHitchhiker12 Pineline/"
 }
 
 ###############################################################################
