@@ -1,9 +1,7 @@
 // Config
 class Globals {
-<%
-"   static String GitRepo = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git`'"
-"   static String ModuleName = `'$PLASTER_PARAM_ModuleName`'"
-%>
+   static String GitRepo = 'https://github.com/author/GoodSample3.git'
+   static String ModuleName = 'GoodSample3'
     static String JenkinsChannel = '#jenkins-channel'
 }
 
@@ -83,3 +81,4 @@ def notifyBuild(String buildStatus = 'STARTED') {
 
   //slackSend (color: colorCode, channel: "${Globals.JenkinsChannel}", message: summary)
 }
+

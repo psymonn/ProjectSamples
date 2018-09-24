@@ -3,15 +3,11 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-<%
-"	`$ModuleName = `"$PLASTER_PARAM_ModuleName`","
-"	`$ModulePath = `'./$PLASTER_PARAM_ModuleName`',"
-	 @'
+	$ModuleName = "GoodSample4",
+	$ModulePath = './GoodSample4',
     $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
-	$BuildNumber = '1'
-'@	
-%>	
+	$BuildNumber = '1'	
 )
 
 ###############################################################################
@@ -23,20 +19,15 @@ $Settings = @{
     SMBRepoName = 'LocalNuGetFeed'
     SMBRepoPath = 'http://localhost:8087/nuget'
 	Tags = ""
-<%
-"    Author = `'$PLASTER_PARAM_ModuleAuthor`'"
-"	 Owners = `'A Team`'"
-"    LicenseUrl = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName/LICENSE`'"
-"    ProjectUrl = `"https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName`""
-"    PackageDescription = `'$PLASTER_PARAM_ModuleDesc`'"
-"    Repository = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git`'"
-   
-	@'
+    Author = 'psymonn'
+	 Owners = 'A Team'
+    LicenseUrl = 'https://github.com/psymonn/GoodSample4/LICENSE'
+    ProjectUrl = "https://github.com/psymonn/GoodSample4"
+    PackageDescription = 'meDescription'
+    Repository = 'https://github.com/psymonn/GoodSample4.git'
     # TODO: fix any redudant naming
-'@		
-"    GitRepo = `"$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName`""
-"    CIUrl = `"http://localhost:8080/job/$PLASTER_PARAM_ModuleName Pineline/`""
-%>
+    GitRepo = "psymonn/GoodSample4"
+    CIUrl = "http://localhost:8080/job/GoodSample4 Pineline/"
 }
 
 ###############################################################################
@@ -88,3 +79,4 @@ task BeforeTest {}
 
 # Synopsis: Executes after the Test Task.
 task AfterTest {}
+
