@@ -4,7 +4,7 @@
     GUID              = 'b15cb232-3853-41fb-a3a3-d5f3293f7678'
     Author            = 'Psymon Ng'
     CompanyName       = 'MyCompany.com'
-    Description       =  'Collection of Plaster Templates Created by Simon Nguyen'
+    Description       =  'Collection of Plaster Templates Created by Psymon Ng'
     PrivateData       = @{
         PSData = @{
             Extensions = @{
