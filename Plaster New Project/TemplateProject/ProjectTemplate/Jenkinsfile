@@ -1,0 +1,81 @@
+// Config
+class Globals {
+<%
+"   static String GitRepo = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git`'"
+"   static String ModuleName = `'$PLASTER_PARAM_ModuleName`'"
+%>
+   static String eMail = 'report.email@gmail.com'
+}
+
+// Workflow Steps
+node('master') {
+  try {
+//    checkout scm
+
+    notifyBuild('STARTED')
+
+//    stage('Stage 0: Clone') {
+//      git url: Globals.GitRepo
+//    }
+    stage('Stage: InstallDependencies') {
+      posh 'Invoke-Build InstallDependencies'
+    }
+    stage('Stage 1: Clean') {
+      posh 'Invoke-Build Clean'
+    }
+    stage('Stage 2: Analyse') {
+      posh 'Invoke-Build Analyse'
+    }
+    stage('Stage 3: Test') {
+      posh 'Invoke-Build RunTests'
+      step([$class: 'NUnitPublisher',
+        testResultsPattern: '**\\TestResults.xml',
+        debug: false,
+        keepJUnitReports: true,
+        skipJUnitArchiver:false,
+        failIfNoResults: true
+      ])
+      publishHTML (target: [
+        allowMissing: false,
+        alwaysLinkToLastBuild: true,
+        keepAll: true,
+        reportDir: 'artifacts',
+        reportFiles: 'TestReport.htm',
+        reportName: "PowerShell Test Report"
+      ])
+      posh 'Invoke-Build ConfirmTestsPassed'
+    }
+    stage('Stage 4: Archive') {
+      posh 'Invoke-Build Archive'
+      archiveArtifacts artifacts: "artifacts/${Globals.ModuleName}.zip", onlyIfSuccessful: true
+      archiveArtifacts artifacts: "artifacts/${Globals.ModuleName}.*.nupkg", onlyIfSuccessful: true
+    }
+    stage('Stage 5: Publish') {
+      timeout(20) {
+        posh 'Invoke-Build Publish'
+      }
+    }
+
+  } catch (e) {
+    currentBuild.result = "FAILED"
+    throw e
+  } finally {
+    notifyBuild(currentBuild.result)
+  }
+}
+
+// Helper function to run PowerShell Commands
+def posh(cmd) {
+  bat 'powershell.exe -NonInteractive -NoProfile -ExecutionPolicy Bypass -Command "& ' + cmd + '"'
+}
+
+// eMail Notification
+def notifyBuild(status){
+    status = status ?: 'SUCCESSFUL'
+    emailext (
+      to: "${Globals.eMail}",
+      subject: "${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+      body: """<p>${status}: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]':</p>
+               <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
+    )
+}
