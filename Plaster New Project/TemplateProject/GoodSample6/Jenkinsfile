@@ -1,9 +1,7 @@
 // Config
 class Globals {
-<%
-"   static String GitRepo = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git`'"
-"   static String ModuleName = `'$PLASTER_PARAM_ModuleName`'"
-%>
+   static String GitRepo = 'https://github.com/psymonn/GoodSample6.git'
+   static String ModuleName = 'GoodSample6'
    static String eMail = 'report.email@gmail.com'
 }
 
@@ -79,3 +77,4 @@ def notifyBuild(status){
                <p>Check console output at <a href='${env.BUILD_URL}'>${env.JOB_NAME} [${env.BUILD_NUMBER}]</a></p>""",
     )
 }
+

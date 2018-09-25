@@ -1,16 +1,17 @@
 @{
-    RootModule        = 'ProjectTemplate'
+    RootModule        = 'ProjectTemplate.psm1'
     ModuleVersion     = '0.0.1'
-    GUID              = 'b15cb232-3853-41fb-a3a3-d5f3293f7678'
+    GUID              = '9b9ec88d-1f15-476c-a877-349c66cf37c0'
     Author            = 'Psymon Ng'
     CompanyName       = 'MyCompany.com'
     Description       =  'Collection of Plaster Templates Created by Psymon Ng'
+    RequiredModules   = @(@{ModuleName = 'Plaster'; ModuleVersion = '1.1.3'; })
     PrivateData       = @{
         PSData = @{
             Extensions = @{
                 Module  = 'Plaster'
                 Details = @{
-                    TemplatePaths = @('Function', 'Module')
+                    TemplatePaths = @('Module')
                 }
             }
         }

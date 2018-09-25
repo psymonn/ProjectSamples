@@ -1,7 +1,7 @@
 Describe PlasterTemplates {
     BeforeAll {
         $moduleRoot = "$PSScriptRoot\.."
-        $moduleData = Import-PowerShellDataFile -Path "$moduleRoot\PlasterTemplates.psd1"
+        $moduleData = Import-PowerShellDataFile -Path "$moduleRoot\ProjectTemplate.psd1"
     }
 
     It "Should have module data" {
