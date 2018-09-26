@@ -1,9 +1,9 @@
 # Include: Settings
-. './GoodSample12.build.settings.ps1'
+. './GoodSample13.build.settings.ps1'
 # Include: build_utils
 . './build_utils.ps1'
 
-Update-ModuleManifest -Path .\GoodSample12\GoodSample12.psd1 -ModuleVersion "1.1.1.0"
+Update-ModuleManifest -Path .\GoodSample13\GoodSample13.psd1 -ModuleVersion "1.1.1.0"
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -37,8 +37,8 @@ task Clean BeforeClean, {
     New-Item -ItemType Directory -Path $Artifacts -Force
 
     # Temp
-    #If let it run then error -> fatal: destination path 'GoodSample12' already exists and is not an empty directory.
-	#& git clone https://github.com/psymonn/GoodSample12.git
+    #If let it run then error -> fatal: destination path 'GoodSample13' already exists and is not an empty directory.
+	#& git clone https://github.com/psymonn/GoodSample13.git
 
 }, AfterClean
 

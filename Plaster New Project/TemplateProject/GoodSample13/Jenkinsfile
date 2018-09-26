@@ -1,7 +1,7 @@
 // Config
 class Globals {
-   static String GitRepo = 'https://github.com/psymonn/GoodSample12.git'
-   static String ModuleName = 'GoodSample12'
+   static String GitRepo = 'https://github.com/psymonn/GoodSample13.git'
+   static String ModuleName = 'GoodSample13'
    static String eMail = 'report.email@gmail.com'
 }
 

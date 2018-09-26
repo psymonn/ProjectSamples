@@ -3,8 +3,8 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-	$ModuleName = "GoodSample12",
-	$ModulePath = './GoodSample12',
+	$ModuleName = "GoodSample13",
+	$ModulePath = './GoodSample13',
     $PercentCompliance  = '60',
 	#$BuildNumber = $env:BUILD_NUMBER
 	$BuildNumber = '1'	
@@ -21,13 +21,13 @@ $Settings = @{
 	Tags = ""
     Author = 'psymonn'
 	 Owners = 'A Team'
-    LicenseUrl = 'https://github.com/psymonn/GoodSample12/LICENSE'
-    ProjectUrl = "https://github.com/psymonn/GoodSample12"
-    PackageDescription = 'dsafds'
-    Repository = 'https://github.com/psymonn/GoodSample12.git'
+    LicenseUrl = 'https://github.com/psymonn/GoodSample13/LICENSE'
+    ProjectUrl = "https://github.com/psymonn/GoodSample13"
+    PackageDescription = 'dsaf'
+    Repository = 'https://github.com/psymonn/GoodSample13.git'
     # TODO: fix any redudant naming
-    GitRepo = "psymonn/GoodSample12"
-    CIUrl = "http://localhost:8080/job/GoodSample12 Pineline/"
+    GitRepo = "psymonn/GoodSample13"
+    CIUrl = "http://localhost:8080/job/GoodSample13 Pineline/"
 }
 
 ###############################################################################

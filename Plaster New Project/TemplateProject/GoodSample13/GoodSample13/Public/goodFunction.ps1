@@ -1,4 +1,4 @@
-function myNewFunction
+function goodFunction
 {
   <#
     .Synopsis
@@ -8,11 +8,7 @@ function myNewFunction
     .EXAMPLE
       Example of how to use this cmdlet
   #>
-    [CmdletBinding(DefaultParameterSetName='Parameter Set 1',
-                SupportsShouldProcess=$true,
-                PositionalBinding=$false,
-                HelpUri = 'http://www.microsoft.com/',
-                ConfirmImpact='Medium')]
+    [CmdletBinding()]
     Param
     (
         [Parameter(
