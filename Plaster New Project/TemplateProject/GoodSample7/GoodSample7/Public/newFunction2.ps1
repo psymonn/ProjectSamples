@@ -1,4 +1,4 @@
-function newFunction
+function newFunction2
 {
   <#
     .Synopsis
@@ -21,22 +21,17 @@ function newFunction
     begin
     {
 		
-		write-host "not loaded1 get-calledPreference - $ErrorActionPreference"
+		write-host "not loadedA get-calledPreference - $ErrorActionPreference"
 		
-		$script:ErrorActionPreference = 'changed1'
-		write-host "not loaded2 get-calledPreference - $ErrorActionPreference"
+		$script:ErrorActionPreference = 'changed2'
+		write-host "not loadedB get-calledPreference - $ErrorActionPreference"
 		
 		Get-CallerPreference -Cmdlet $PSCmdlet -SessionState $ExecutionContext.SessionState -Name 'ErrorActionPreference'
 		
-		write-host "loaded3 get-calledPreference - $ErrorActionPreference"
-		
-		
+		write-host "loaded2C get-calledPreference - $ErrorActionPreference"
     }
     process
     {
-		 write-host "###########################3#############"
-		 newFunction2 com
-
         forEach ($computer in $ComputerName)
         {
 

@@ -22,15 +22,6 @@
                         <choice label='&amp;2.Plugins' value='Plugins' help='Adds a Plugins folder to module root'/>
                 </parameter>
 -->
-		<parameter name='Sample' type = 'choice' prompt='Include Sample Project?' default='1'>
-                        <choice label='&amp;Yes' value='Yes' help='Adds a sample folder'/>
-                        <choice label='&amp;No' value='No' help='Does not add a sample folder'/>
-                </parameter>
-
-		<parameter name='VScode' type = 'choice' prompt='Include VScode' default='0'>
-                        <choice label='&amp;Yes' value='Yes' help='Adds a VScode support'/>
-                        <choice label='&amp;No' value='No' help='Does not add VScode support'/>
-                </parameter>
 
 <!--
                 <parameter name='FunctionName' type = 'choice' prompt='Create new public Function' default='0'>
@@ -64,6 +55,16 @@
                 <choice label="&amp;No" help="Does not include computername parameter" value="No" />
                 </parameter>
 
+                <parameter name='Sample' type = 'choice' prompt='Include Sample Project?' default='1'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a sample folder'/>
+                        <choice label='&amp;No' value='No' help='Does not add a sample folder'/>
+                </parameter>
+
+		<parameter name='VScode' type = 'choice' prompt='Include VScode' default='0'>
+                        <choice label='&amp;Yes' value='Yes' help='Adds a VScode support'/>
+                        <choice label='&amp;No' value='No' help='Does not add VScode support'/>
+                </parameter>
+
         </parameters>
         <content>
                 <message>Setting up your project</message>
@@ -81,6 +82,7 @@
                 <message>Creating function template</message>
                 <templateFile source='Function\functionTemplate.ps1' destination='${PLASTER_PARAM_ModuleName}\Public\${PLASTER_PARAM_FunctionName}.ps1'/>
                 <templateFile source='Function\testsTemplate.ps1' destination='.\Tests\${PLASTER_PARAM_FunctionName}.tests.ps1'/>
+                <templateFile source='CallerPreference.ps1' destination='${PLASTER_PARAM_ModuleName}\Private\Get-CallerPreference.ps1'/>
 
                 <message condition='$PLASTER_PARAM_Sample -eq "Yes"'>Setting up support for Sample Project</message>
                 <templateFile source='Tests\**' destination='.\Tests' condition='$PLASTER_PARAM_Sample -eq "Yes"'/>
@@ -104,8 +106,9 @@
                 <message>Setting up support for Invoke-Build</message>
                 <requireModule name="InvokeBuild"/>
                 <templateFile source='default.build.ps1' destination='${PLASTER_PARAM_ModuleName}.build.ps1'/>
-                <templateFile source='default.settings.ps1' destination='${PLASTER_PARAM_ModuleName}.settings.ps1'/>
+                <templateFile source='default.build.settings.ps1' destination='${PLASTER_PARAM_ModuleName}.build.settings.ps1'/>
                 <templateFile source='build_utils.ps1' destination='.\build_utils.ps1'/>
+                <templateFile source='build.ps1' destination='.\build.ps1'/>
                 <templateFile source='Jenkinsfile' destination='.\Jenkinsfile'/>
                 <file source='PSTestReport\**' destination='.\PSTestReport'/>
                 <file source='' destination='.\artifacts\'/>

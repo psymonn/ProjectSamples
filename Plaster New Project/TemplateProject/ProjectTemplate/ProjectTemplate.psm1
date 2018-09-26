@@ -6,7 +6,7 @@ function New-ProjectTemplate
     .DESCRIPTION
       Create new project module
     .EXAMPLE
-      Example of how to use this cmdlet
+      New-ProjectTemplate c:\temp\project
   #>
     [CmdletBinding()]
     Param
@@ -45,7 +45,7 @@ function New-ProjectTemplate
 
             } catch {
 
-                Write-Host 'Create Project Template Failed with the following error:'
+                Write-Host -ForegroundColor Green 'Create Project Template Failed with the following error:'
                 Write-Host $_
 
             }

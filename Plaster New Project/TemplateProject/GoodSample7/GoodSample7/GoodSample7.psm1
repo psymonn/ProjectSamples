@@ -13,5 +13,11 @@ ForEach ($folder in $functionFolders)
         }
     }    
 }
+
+# Non-function exported public module members might go here.
+#Export-ModuleMember -Variable SomeVariable -Function  *
 $publicFunctions = (Get-ChildItem -Path "$PSScriptRoot\Public" -Filter '*.ps1').BaseName
 Export-ModuleMember -Function $publicFunctions
+
+# Use this in your scripts to check if the function is being called from your module or independantly.
+$ThisModuleLoaded = $true
