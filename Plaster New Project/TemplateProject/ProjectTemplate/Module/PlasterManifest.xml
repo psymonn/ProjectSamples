@@ -36,6 +36,11 @@
                         <choice label='&amp;ComputerName' value='yes' help='Add a paramater for computername'/>
                 </parameter>
 -->
+                <parameter name='Sample' type = 'choice' prompt='Include Sample Project?' default='1'>
+                       <choice label='&amp;Yes' value='Yes' help='Adds a sample folder'/>
+                       <choice label='&amp;No' value='No' help='Does not add a sample folder'/>
+                </parameter>
+
                 <parameter name="FunctionName" type="text" prompt="Name of your Function" />
                 <parameter name="Help" type="choice" prompt="Include Comment Based Help?" default='0'>
                 <choice label="&amp;Yes" help="Adds comment based help" value="Yes" />
@@ -53,11 +58,6 @@
                 <parameter name="ComputerName" type="choice" prompt="Add a paramater for computername" default='0'>
                 <choice label="&amp;Yes" help="Adds a default parameter for computername" value="Yes" />
                 <choice label="&amp;No" help="Does not include computername parameter" value="No" />
-                </parameter>
-
-                <parameter name='Sample' type = 'choice' prompt='Include Sample Project?' default='1'>
-                        <choice label='&amp;Yes' value='Yes' help='Adds a sample folder'/>
-                        <choice label='&amp;No' value='No' help='Does not add a sample folder'/>
                 </parameter>
 
 		<parameter name='VScode' type = 'choice' prompt='Include VScode' default='0'>
@@ -114,7 +114,7 @@
                 <file source='' destination='.\artifacts\'/>
 
 	        <message condition='$PLASTER_PARAM_VScode -eq "Yes"'>Setting up support for VScode</message>
-                <file source='.vscode\**' destination='${PLASTER_PARAM_ModuleName}\.vscode' condition='$PLASTER_PARAM_VScode -eq "Yes"'/>
+                <file source='.vscode\**' destination='.vscode' condition='$PLASTER_PARAM_VScode -eq "Yes"'/>
 
         </content>
 </plasterManifest>

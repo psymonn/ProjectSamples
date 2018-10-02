@@ -1,13 +1,9 @@
 # Include: Settings
-<%
-". `'./$PLASTER_PARAM_ModuleName.build.settings.ps1`'"
-%>
+. './GoodSample16.build.settings.ps1'
 # Include: build_utils
 . './build_utils.ps1'
 
-<%
-"Update-ModuleManifest -Path .\$PLASTER_PARAM_ModuleName\$PLASTER_PARAM_ModuleName.psd1"
-%>
+Update-ModuleManifest -Path .\GoodSample16\GoodSample16.psd1
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -42,10 +38,8 @@ task Clean BeforeClean, {
     New-Item -ItemType Directory -Path $Artifacts -Force
 
     # Temp
-<%
-"    #If let it run then error -> fatal: destination path `'$PLASTER_PARAM_ModuleName`' already exists and is not an empty directory."
-"	#& git clone https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git"
-%>
+    #If let it run then error -> fatal: destination path 'GoodSample16' already exists and is not an empty directory.
+	#& git clone https://github.com/psymonn/GoodSample16.git
 
 }, AfterClean
 
@@ -167,3 +161,4 @@ task Publish BeforePublish, {
 
     Publish-SMBModule @moduleInfo -Verbose
 }, AfterPublish
+
