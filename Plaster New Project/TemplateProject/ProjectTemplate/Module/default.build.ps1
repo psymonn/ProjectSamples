@@ -13,8 +13,8 @@
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
 
 # Synopsis: Run full Pipleline.
-#task . InstallDependencies, Clean, Analyze, Test, Archive, Publish
-task . InstallDependencies, Clean, Analyze, Test, Archive
+#task . InstallDependencies, Clean, Analyse, Test, Archive, Publish
+task . InstallDependencies, Clean, Analyse, Test, Archive
 
 # Synopsis: Install Build Dependencies
 task InstallDependencies {
@@ -49,25 +49,25 @@ task Clean BeforeClean, {
 
 }, AfterClean
 
-# Synopsis: Lint Code with PSScriptAnalyzer
-task Analyze BeforeAnalyze, {
-    $scriptAnalyzerParams = @{
+# Synopsis: Lint Code with PSScriptAnalyser
+task Analyse BeforeAnalyse, {
+    $scriptAnalyserParams = @{
         Path = $ModulePath
         Severity = @('Error', 'Warning')
         Recurse = $true
         Verbose = $false
     }
 
-    $saResults = Invoke-ScriptAnalyzer @scriptAnalyzerParams
+    $saResults = Invoke-ScriptAnalyzer @scriptAnalyserParams
 
-    # Save Analyze Results as JSON
+    # Save Analyse Results as JSON
     $saResults | ConvertTo-Json | Set-Content (Join-Path $Artifacts "ScriptAnalysisResults.json")
 
     if ($saResults) {
         $saResults | Format-Table
         throw "One or more PSScriptAnalyzer errors/warnings where found."
     }
-}, AfterAnalyze
+}, AfterAnalyse
 
 # Synopsis: Test the project with Pester. Publish Test and Coverage Reports
 task RunTests {
@@ -106,7 +106,7 @@ task RunTests {
         CiURL = $Settings.CiURL
         ShowHitCommands = $true
         Compliance = ($PercentCompliance / 100)
-        ScriptAnalyzerFile = (Join-Path $Artifacts "ScriptAnalysisResults.json")
+        ScriptAnalyserFile = (Join-Path $Artifacts "ScriptAnalysisResults.json")
         PesterFile =  (Join-Path $Artifacts "PesterResults.json")
         OutputDir = "$Artifacts"
     }
