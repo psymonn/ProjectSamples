@@ -39,8 +39,8 @@ $options = @{
 
 ## Example ##
 
-![internalMessage1](powershell-test-report-fail.png)
+![HitchHikersGuide](powershell-test-report-fail.png)
 
 ## Example with sidebar in Jenkins
 
-![internalMessage2](powershell-test-report-pass.png)
+![HitchHikersGuide](powershell-test-report-pass.png)

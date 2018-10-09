@@ -244,7 +244,7 @@ $Replace = @{
     CI_BUILD_URL = $CiURL
     NUMBER_OF_PS1_FILES = (Get-ChildItem -Recurse -Include *ps1 | Measure-Object).Count
     BUILD_NUMBER = $BuildNumber
-    BUILD_DATE = Get-Date -Format u
+    BUILD_DATE = Get-Date -Format g
     COMMIT_HASH = Get-GitCommitHash -Length 10
 
     # Generated

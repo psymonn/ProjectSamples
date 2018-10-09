@@ -3,15 +3,11 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-<%
-"	`$ModuleName = `"$PLASTER_PARAM_ModuleName`","
-"	`$ModulePath = `'./$PLASTER_PARAM_ModuleName`',"
-	 @'
+	$ModuleName = "ProjectTemplateGenerate2",
+	$ModulePath = './ProjectTemplateGenerate2',
     $PercentCompliance  = '60',
 	$BuildNumber = $env:BUILD_NUMBER
 	#$BuildNumber = '1'
-'@
-%>
 )
 
 if (!$env:BUILD_NUMBER) {
@@ -27,20 +23,15 @@ $Settings = @{
     SMBRepoName = 'LocalNuGetFeed'
     SMBRepoPath = 'http://localhost:8087/nuget'
 	Tags = ""
-<%
-"    Author = `'$PLASTER_PARAM_ModuleAuthor`'"
-"	 Owners = `'A Team`'"
-"    LicenseUrl = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName/LICENSE`'"
-"    ProjectUrl = `"https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName`""
-"    PackageDescription = `'$PLASTER_PARAM_ModuleDesc`'"
-"    Repository = `'https://github.com/$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName.git`'"
-
-	@'
+    Author = 'meAuthor'
+	 Owners = 'A Team'
+    LicenseUrl = 'https://github.com/meAuthor/ProjectTemplateGenerate2/LICENSE'
+    ProjectUrl = "https://github.com/meAuthor/ProjectTemplateGenerate2"
+    PackageDescription = 'dsaf'
+    Repository = 'https://github.com/meAuthor/ProjectTemplateGenerate2.git'
     # TODO: fix any redudant naming
-'@
-"    GitRepo = `"$PLASTER_PARAM_ModuleAuthor/$PLASTER_PARAM_ModuleName`""
-"    CIUrl = `"http://localhost:8080/job/$PLASTER_PARAM_ModuleName Pineline/`""
-%>
+    GitRepo = "meAuthor/ProjectTemplateGenerate2"
+    CIUrl = "http://localhost:8080/job/ProjectTemplateGenerate2 Pineline/"
 }
 
 ###############################################################################
@@ -92,3 +83,4 @@ task BeforeTest {}
 
 # Synopsis: Executes after the Test Task.
 task AfterTest {}
+
