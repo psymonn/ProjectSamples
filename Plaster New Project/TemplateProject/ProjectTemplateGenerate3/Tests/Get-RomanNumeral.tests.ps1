@@ -2,7 +2,7 @@ $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 Write-Host "parent: $here"
 
 #$here = $here -replace 'tests', 'PSHitchhiker'
-$here = $here -replace 'tests', 'ProjectTemplateGenerate2'	
+$here = $here -replace 'tests', 'ProjectTemplateGenerate3'	
 Write-Host "replace: $here"
 
 $sut = (Split-Path -Leaf $MyInvocation.MyCommand.Path) -replace '\.Tests\.', '.'

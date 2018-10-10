@@ -3,8 +3,8 @@
 ###############################################################################
 param(
     $Artifacts = './artifacts',
-	$ModuleName = "ProjectTemplateGenerate2",
-	$ModulePath = './ProjectTemplateGenerate2',
+	$ModuleName = "ProjectTemplateGenerate3",
+	$ModulePath = './ProjectTemplateGenerate3',
     $PercentCompliance  = '60',
 	$BuildNumber = $env:BUILD_NUMBER
 	#$BuildNumber = '1'
@@ -25,13 +25,13 @@ $Settings = @{
 	Tags = ""
     Author = 'meAuthor'
 	 Owners = 'A Team'
-    LicenseUrl = 'https://github.com/meAuthor/ProjectTemplateGenerate2/LICENSE'
-    ProjectUrl = "https://github.com/meAuthor/ProjectTemplateGenerate2"
-    PackageDescription = 'dsaf'
-    Repository = 'https://github.com/meAuthor/ProjectTemplateGenerate2.git'
+    LicenseUrl = 'https://github.com/meAuthor/ProjectTemplateGenerate3/LICENSE'
+    ProjectUrl = "https://github.com/meAuthor/ProjectTemplateGenerate3"
+    PackageDescription = 'dsafs'
+    Repository = 'https://github.com/meAuthor/ProjectTemplateGenerate3.git'
     # TODO: fix any redudant naming
-    GitRepo = "meAuthor/ProjectTemplateGenerate2"
-    CIUrl = "http://localhost:8080/job/ProjectTemplateGenerate2 Pineline/"
+    GitRepo = "meAuthor/ProjectTemplateGenerate3"
+    CIUrl = "http://localhost:8080/job/ProjectTemplateGenerate3 Pineline/"
 }
 
 ###############################################################################

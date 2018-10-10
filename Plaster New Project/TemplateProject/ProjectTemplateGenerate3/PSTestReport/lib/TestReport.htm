@@ -121,22 +121,23 @@
 
           <li><a href="#overview">Overview</a></li>
 
-          <li><a href="#tests">Tests</a></li>
-
           <li><a href="#analysis">Script Analysis</a></li>
+
+          <li><a href="#file-tested">File Tested</a></li>
+
+          <li><a href="#tests">Pester</a></li>
 
           <li><a href="#coverage">Coverage</a></li>
 
-          <li class="nav-divider"></li>
+          <!-- <li class="nav-divider"></li> -->
 
           <li><a href="{REPO_URL}">Git Repository</a></li>
 
-          <li><a href="{CI_BUILD_URL}">CI Build</a></li>
+          <li><a href="{CI_BUILD_URL}">Jenkins Build</a></li>
 
         </ul>
 
       </div>
-
 
 
       <div class="col-sm-9 col-sm-offset-3 col-md-11 col-md-offset-1 main">
@@ -155,7 +156,7 @@
 
           </svg> -->
 
-          Summary <small>{REPO}</small></h1>
+          Project <small>{REPO}</small></h1>
 
 
 
@@ -163,7 +164,7 @@
 
           <div class="col-sm-3">
 
-            <div class="panel panel-primary">
+            <div class="panel panel-default">
 
               <div class="panel-heading">
 
@@ -314,7 +315,7 @@
 
         <div class="row">
 
-          <div class="col-xs-6 col-sm-3">
+          <div class="col-xs-6 col-sm-9">
               <div class="panel panel-default">
                 <div class="panel-heading">
                   <h3 class="panel-title"><i class="fa fa-info-circle" aria-hidden="true"></i> Stats</h3>
@@ -325,79 +326,118 @@
                   <tr>
                     <td>Total Count</td>
                     <td>{TOTAL_COUNT}</td>
-                  </tr>
-                  <tr>
                     <td>Passed Count</td>
                     <td>{PASSED_COUNT}</td>
-                  </tr>
-                  <tr>
                     <td>Failed Count</td>
                     <td>{FAILED_COUNT}</td>
                   </tr>
+
                   <tr>
                     <td>Skipped Count</td>
                     <td>{SKIPPED_COUNT}</td>
-                  </tr>
-                  <tr>
                     <td>Pending Count</td>
                     <td>{PENDING_COUNT}</td>
-                  </tr>
-                  <tr>
                     <td>Number Of Commands Analyzed</td>
                     <td>{NUMBER_OF_COMMANDS_ANALYZED}</td>
                   </tr>
+
                   <tr>
                     <td>Number Of Files Analyzed</td>
                     <td>{NUMBER_OF_FILES_ANALYZED}</td>
-                  </tr>
-                  <tr>
                     <td>Number Of Commands Executed</td>
                     <td>{NUMBER_OF_COMMANDS_EXECUTED}</td>
-                  </tr>
-                  <tr>
                     <td>Number Of Commands Missed</td>
                     <td>{NUMBER_OF_COMMANDS_MISSED}</td>
                   </tr>
+
                 </table>
               </div>
           </div>
 
-          <div class="col-xs-6 col-sm-4">
+        </div>
 
-            <h2 class="sub-header"><i class="fa fa-file-text-o" aria-hidden="true"></i> Files Tested <span class="badge">{NUMBER_OF_FILES_ANALYZED}</span></h2>
+        <div class="row placeholders">
 
-            <table class="table table-striped">
+            <div class="col-xs-6 col-sm-9">
 
-              <thead>
+              <h2 class="sub-header" id="analysis"><i class="fa fa-eye" aria-hidden="true"></i> Script Analysis
 
-                <tr>
+                <span class="badge">{SA_ERROR_COUNT} error(s)</span>
 
-                  <th class="col-xs-12">File &amp; Test Coverage</th>
+                <span class="badge">{SA_WARNING_COUNT} warning(s)</span>
 
-                  <!--<th class="col-xs-6">Coverage</th>-->
+              </h2>
 
-                </tr>
+              <table class="table table-striped">
 
-              </thead>
+                <thead>
 
-              <tbody>
+                  <tr>
 
-                {FILES_TESTED_TABLE}
+                    <th>Severity</th>
 
-              </tbody>
+                    <th>RuleName</th>
 
-            </table>
+                    <th>ScriptName</th>
+
+                    <th>Line</th>
+
+                    <th>Column</th>
+
+                    <th>Message</th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                  {SCRIPT_ANALYSIS_TABLE}
+
+                </tbody>
+
+              </table>
+
+            </div>
 
           </div>
+
+        <div class="row placeholders">
+            <div class="col-xs-6 col-sm-9">
+
+                <h2 class="sub-header" id="file-tested"><i class="fa fa-file-text-o" aria-hidden="true"></i> Files Tested <span class="badge">{NUMBER_OF_FILES_ANALYZED}</span></h2>
+
+                <table class="table table-striped">
+
+                  <thead>
+
+                    <tr>
+
+                      <th class="col-xs-12">File &amp; Test Coverage</th>
+
+                      <!--<th class="col-xs-6">Coverage</th>-->
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+
+                    {FILES_TESTED_TABLE}
+
+                  </tbody>
+
+                </table>
+
+              </div>
 
         </div>
 
 
+
         <div class="row placeholders">
 
-
-
-          <div class="col-xs-6 col-sm-8">
+          <div class="col-xs-6 col-sm-9">
 
             <h2 class="sub-header" id="tests">
 
@@ -445,71 +485,16 @@
 
           </div>
 
-
-
-
-
-
-
         </div>
+
+
+
 
 
 
         <div class="row placeholders">
 
-
-
-          <div class="col-xs-6 col-sm-12">
-
-            <h2 class="sub-header" id="analysis"><i class="fa fa-eye" aria-hidden="true"></i> Script Analysis
-
-              <span class="badge">{SA_ERROR_COUNT} error(s)</span>
-
-              <span class="badge">{SA_WARNING_COUNT} warning(s)</span>
-
-            </h2>
-
-            <table class="table table-striped">
-
-              <thead>
-
-                <tr>
-
-                  <th>Severity</th>
-
-                  <th>RuleName</th>
-
-                  <th>ScriptName</th>
-
-                  <th>Line</th>
-
-                  <th>Column</th>
-
-                  <th>Message</th>
-
-                </tr>
-
-              </thead>
-
-              <tbody>
-
-                {SCRIPT_ANALYSIS_TABLE}
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-
-
-        <div class="row placeholders">
-
-
-
-          <div class="col-xs-6 col-sm-12">
+          <div class="col-xs-6 col-sm-9">
 
             <h2 class="sub-header" id="coverage">
 
@@ -551,11 +536,7 @@
 
           </div>
 
-
-
         </div>
-
-
 
       </div>
 

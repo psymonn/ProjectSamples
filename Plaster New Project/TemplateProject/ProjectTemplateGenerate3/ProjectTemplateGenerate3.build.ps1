@@ -1,9 +1,9 @@
 # Include: Settings
-. './ProjectTemplateGenerate2.build.settings.ps1'
+. './ProjectTemplateGenerate3.build.settings.ps1'
 # Include: build_utils
 . './build_utils.ps1'
 
-#Update-ModuleManifest -Path .\ProjectTemplateGenerate2\ProjectTemplateGenerate2.psd1
+#Update-ModuleManifest -Path .\ProjectTemplateGenerate3\ProjectTemplateGenerate3.psd1
 
 # Synopsis: Run/Publish Tests and Fail Build on Error
 task Test BeforeTest, RunTests, ConfirmTestsPassed, AfterTest
@@ -38,8 +38,8 @@ task Clean BeforeClean, {
     New-Item -ItemType Directory -Path $Artifacts -Force
 
     # Temp
-    #If let it run then error -> fatal: destination path 'ProjectTemplateGenerate2' already exists and is not an empty directory.
-	#& git clone https://github.com/meAuthor/ProjectTemplateGenerate2.git
+    #If let it run then error -> fatal: destination path 'ProjectTemplateGenerate3' already exists and is not an empty directory.
+	#& git clone https://github.com/meAuthor/ProjectTemplateGenerate3.git
 
 }, AfterClean
 
